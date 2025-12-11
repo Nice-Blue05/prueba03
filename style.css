@@ -1,4 +1,4 @@
-/* Variables CSS originales */
+/* Variables CSS para manejo de colores */
 :root {
     --primary-color: #007bff; /* Azul */
     --secondary-color: #6c757d; /* Gris */
@@ -6,174 +6,166 @@
     --text-color: #333;
     --card-background: #fff;
     --shadow-color: rgba(0, 0, 0, 0.1);
-    --bot-color: #28a745; /* Verde para el bot */
 }
 
-/* --- Estilos para Modo Oscuro --- */
-body.dark-mode {
-    --primary-color: #4da6ff; /* Azul claro para contraste */
-    --secondary-color: #adb5bd;
-    --background-color: #121212; /* Fondo muy oscuro */
-    --text-color: #e0e0e0; /* Texto claro */
-    --card-background: #1e1e1e; /* Fondo de tarjeta oscuro */
-    --shadow-color: rgba(0, 0, 0, 0.5);
-    --bot-color: #5cb874; 
-}
-
-body.dark-mode .hero {
-    background-color: #004d99; /* Azul oscuro */
-}
-
-body.dark-mode .tab-buttons {
-    background-color: #2a2a2a;
-}
-
-body.dark-mode .tab-link.active {
-    background-color: var(--card-background);
-}
-
-body.dark-mode .footer {
-    background-color: #000;
-}
-
-/* Estilos de Botón de Modo Oscuro */
-.dark-mode-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+* {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
-    line-height: 40px;
-    text-align: center;
-    background-color: var(--secondary-color);
-    color: white;
-    z-index: 100;
 }
 
-.dark-mode-btn:hover {
-    background-color: #5a6268;
-}
-
-/* Estilos de CV */
-.cv-section {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed var(--secondary-color);
-}
-.cv-section:last-child {
-    border-bottom: none;
-}
-.cv-section h4 {
-    color: var(--primary-color);
-    margin-bottom: 5px;
-}
-
-
-/* --- CHATBOT (Nueva Sección) --- */
-#chatbot-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-#chatbot-toggle {
-    border-radius: 50px;
-    padding: 10px 15px;
-    box-shadow: 0 4px 8px var(--shadow-color);
-}
-
-#chatbot-window {
-    width: 300px;
-    height: 400px;
-    background: var(--card-background);
-    border-radius: 10px;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: absolute;
-    bottom: 60px; /* Separación del botón toggle */
-    right: 0;
-}
-
-.chatbot-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.close-btn {
-    font-size: 1.5em;
-    cursor: pointer;
-}
-
-.chatbot-messages {
-    flex-grow: 1;
-    padding: 10px;
-    overflow-y: auto;
-    border-bottom: 1px solid #ddd;
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
     background-color: var(--background-color);
 }
 
-.chatbot-input {
-    display: flex;
-    padding: 10px;
-}
-
-#user-input {
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    background-color: var(--card-background); /* Asegura que cambie en modo oscuro */
-    color: var(--text-color);
-}
-
-#send-btn {
-    background-color: var(--bot-color);
+/* --- Encabezado Principal (Hero) --- */
+.hero {
+    background-color: var(--primary-color);
     color: white;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px var(--shadow-color);
 }
 
-/* Estilos de burbujas de mensaje */
-.message {
-    padding: 8px;
-    border-radius: 15px;
+.hero h1 {
+    margin-bottom: 5px;
+    font-size: 2.5em;
+}
+
+.hero h2 {
+    font-size: 1.2em;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    /* Diseño de cuadrícula para secciones */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* --- Estilo de las Tarjetas (Secciones) --- */
+.card {
+    background: var(--card-background);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--background-color);
+    padding-bottom: 8px;
+}
+
+.card ul {
+    list-style: none; /* Elimina los puntos predeterminados */
+}
+
+.card ul li {
     margin-bottom: 10px;
-    max-width: 80%;
+    padding-left: 10px;
+    /* Simula un bullet point personalizado */
+    position: relative;
 }
 
-.message.bot {
-    background-color: var(--bot-color);
+.card ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+
+/* --- Habilidades (Skills) --- */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills li {
+    background: var(--primary-color);
     color: white;
-    align-self: flex-start;
-    margin-right: auto;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    list-style: none; 
 }
 
-.message.user {
+.skills li::before {
+    content: none; /* Elimina el bullet personalizado */
+}
+
+.skills li:hover {
+    background: #0056b3; /* Un tono más oscuro */
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.secondary-btn {
     background-color: var(--secondary-color);
-    color: white;
-    align-self: flex-end;
-    margin-left: auto;
+    margin-left: 10px;
 }
 
-.hidden {
-    display: none !important;
+.secondary-btn:hover {
+    background-color: #5a6268;
 }
 
 
-/* [Mantiene todos los estilos anteriores de .container, .card, .tab-link, etc.] */
-/* ... */
-/* Por favor, PEGA el resto del código CSS de la respuesta anterior aquí para completarlo. */
-/* ... */
+/* --- Pie de Página --- */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #f4f7f6;
+    margin-top: 30px;
+    font-size: 0.9em;
+}
+
+/* --- Media Queries para responsividad (Móvil) --- */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+        gap: 15px;
+    }
+    .hero h1 {
+        font-size: 2em;
+    }
+}
